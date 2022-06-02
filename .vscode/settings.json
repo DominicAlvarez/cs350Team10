@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "cs350team10/lib/cs350-project-v0_1.jar"
+    ]
+}

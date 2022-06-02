@@ -1,9 +1,6 @@
 package cs350s22.component.ui.parser;
 
 import java.util.List;
-
-
-
 import cs350s22.component.actuator.A_Actuator;
 import cs350s22.component.sensor.A_Sensor;
 import cs350s22.support.Identifier;
