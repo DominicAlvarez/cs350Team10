@@ -1,8 +1,13 @@
 {
     "java.project.sourcePaths": ["src"],
     "java.project.outputPath": "bin",
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "/Users/jdiaz/Programming/CSCD350/cs350-project-v0_1.jar"
-    ]
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar",
+            "/Users/jdiaz/Documents/GitHub/cs350-project-v0_2.jar"
+        ],
+        "exclude": [
+            "lib/cs350-project-v0_1.jar"
+        ]
+    }
 }
