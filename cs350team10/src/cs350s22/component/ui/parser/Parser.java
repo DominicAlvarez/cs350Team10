@@ -5,13 +5,10 @@ import java.text.ParseException;
 
 
 
-public class Parser implements ParserConstants{
+public class Parser{
 
     protected A_ParserHelper parserHelper;
     protected String commandText;
-    protected Token jj_nt;
-    protected Token token;
-    protected ParserTokenManager token_source;
     protected Command cmd;
     
 
@@ -27,6 +24,9 @@ public class Parser implements ParserConstants{
     public void parse() throws IOException, ParseException{
         String[] splitCommand = this.commandText.split(" ");
         cmd = setCommand(parserHelper, splitCommand);
+        if(cmd != null){
+            cmd.start();
+        }
     }
 
     private Command setCommand(A_ParserHelper parserHelper, String[] command){
@@ -34,6 +34,13 @@ public class Parser implements ParserConstants{
         if(type.equals("CREATE")){
             return new CreateCommand(parserHelper, command);
         }
+        else if(type.equals("BUILD")){
+            return new BuildCommand(parserHelper, command);
+        }
+        else if(type.equals("SEND")){
+            return new SendCommand(parserHelper, command);
+        }
+        
         
         return null;
     }
