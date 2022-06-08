@@ -26,7 +26,7 @@ public class Startup
       startup.parse("CREATE ACTUATOR LINEAR actuator0 ACCELERATION LEADIN 0.1 LEADOUT -0.2 RELAX 0.3 VELOCITY LIMIT 5 VALUE MIN 1 MAX 20 INITIAL 2 JERK LIMIT 3");
       startup.parse("CREATE CONTROLLER FORWARDING myController2 WITH COMPONENTS actuator0");
       startup.parse("BUILD NETWORK WITH COMPONENT actuator0");
-      // run your tests like this
+      startup.parse("CREATE REPORTER CHANGE myReporter1 NOTIFY IDS actuator0 DELTA 3");
       startup.parse("SEND MESSAGE PING");
       startup.parse("@exit");
    }
