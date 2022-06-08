@@ -27,7 +27,11 @@ public class Startup
       // this command must come first. The filenames do not matter here
       startup.parse("@CONFIGURE LOG \"a.txt\" DOT SEQUENCE \"b.txt\" NETWORK \"c.txt\" XML \"d.txt\"");
       
-      startup.parse("CREATE ACTUATOR LINEAR actuator0 GROUP myGroup1 ACCELERATION LEADIN 0.5 LEADOUT -0.2 RELAX 0.3 VELOCITY LIMIT 5 VALUE MIN 1 MAX 20 INITIAL 2 JERK LIMIT 3");
+      startup.parse("CREATE ACTUATOR LINEAR actuator0 ACCELERATION LEADIN 0.1 LEADOUT -0.2 RELAX 0.3 VELOCITY LIMIT 5 VALUE MIN 1 MAX 20 INITIAL 2 JERK LIMIT 3");
+      
+      //startup.parse("CREATE REPORTER CHANGE myReporter1 NOTIFY ID actuator0 DELTA 3");
+       startup.parse("BUILD NETWORK WITH COMPONENT actuator0");
+       startup.parse("SEND MESSAGE ID actuator0 POSITION REQUEST 15");
       
       startup.parse("@EXIT");
       
@@ -45,8 +49,8 @@ public class Startup
    {
       System.out.println("PARSE> "+ parse);
       
-      Parser parser = new Parser(_parserHelper, parse);
-      parser.parse();
-      // _parserHelper.schedule(parse);
+      // Parser parser = new Parser(_parserHelper, parse);
+      // parser.parse();
+       _parserHelper.schedule(parse);
    }
 }
