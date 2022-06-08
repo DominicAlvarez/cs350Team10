@@ -9,10 +9,11 @@ import cs350s22.component.sensor.reporter.A_Reporter;
 import cs350s22.support.Identifier;
 
 public class ReporterComponent extends Component{
-    protected List<A_Component> components;
     protected SymbolTable<A_Actuator> _actuatorTable;
     protected SymbolTable<A_Sensor> _sensorTable;
     protected SymbolTable<A_Reporter> _reporterTable;
+    protected List<Identifier> ids;
+    protected List<Identifier> groups;
 
 
     
@@ -46,8 +47,7 @@ public class ReporterComponent extends Component{
                 }
                    
                }
-               components.add(comp);
-               i++;
+              // i++;
            }
        }
        else if(commandText[3].equals("FREQUENCY")){
@@ -71,7 +71,6 @@ public class ReporterComponent extends Component{
                         throw new RuntimeException("INVALID COMPONENT");
                     }
                    }
-                   components.add(comp);
                    i++;
                } // end while
            }
