@@ -3,7 +3,10 @@ package cs350s22.component.ui.parser;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+  @author: Julian Diaz 
+  {@summary} : CSCD 350 project Team 10
+ **/
 
 import cs350s22.component.A_Component;
 import cs350s22.component.actuator.A_Actuator;

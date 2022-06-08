@@ -1,5 +1,10 @@
 package cs350s22.component.ui.parser;
 
+/**
+  @author: Julian Diaz 
+  {@summary} : CSCD 350 project Team 10
+ **/
+
 public class CreateCommand extends Command{
 
     public CreateCommand(A_ParserHelper parserHelper, String[] commandText) {
@@ -20,17 +25,17 @@ public class CreateCommand extends Command{
             case "CONTROLLER":
                 return new ControllerComponent(parserHelper, commandText);
             
-            // case "MAPPER":
-            //     break;
+            case "MAPPER":
+                return new MapperComponent(parserHelper, commandText);
             
-            // case "REPORTER":
-            //     break;
+             case "REPORTER":
+                return new ReporterComponent(parserHelper, commandText);
 
-            // case "SENSOR":
-            //     break;
+            case "SENSOR":
+                return new SensorComponent(parserHelper, commandText);
             
-            // case "WATCHDOG":
-            //     break;
+             case "WATCHDOG":
+                return new WatchdogComponent(parserHelper, commandText);
             
             default:
                 throw new RuntimeException("INVALID COMPONENT" + componentName + " IN CREATE COMMAND");

@@ -10,11 +10,17 @@ import cs350s22.message.actuator.MessageActuatorRequestPosition;
 import cs350s22.message.ping.MessagePing;
 import cs350s22.support.Identifier;
 
+/**
+  @author: Julian Diaz 
+  {@summary} : CSCD 350 project Team 10
+ **/
+
 public class MessageComponent extends Component{
 
-    CommandLineInterface cli;
-    List<Identifier> ids;
-    List<Identifier> groups;
+    protected CommandLineInterface cli;
+    protected List<Identifier> ids;
+    protected List<Identifier> groups;
+    
 
     public MessageComponent(A_ParserHelper parserHelper, String[] commandText) {
         
@@ -22,6 +28,8 @@ public class MessageComponent extends Component{
         cli = parserHelper.getCommandLineInterface();
         ids = new ArrayList<Identifier>();
         groups = new ArrayList<Identifier>();
+        
+
 
     }
 
@@ -39,9 +47,10 @@ public class MessageComponent extends Component{
             int count = 2;
             A_Message msg;
             if(command.equals("ID") || command.equals("IDS")){
+                count++;
                 while(!commandText[count].equals("GROUP") && !commandText[count].equals("GROUPS") && !commandText[count].equals("POSITION")){
-                    count++;
                     ids.add(Identifier.make(commandText[count]));
+                    count++;
                 }
             }
             if(commandText[count].equals("GROUP") || commandText[count].equals("GROUPS")){
@@ -61,6 +70,7 @@ public class MessageComponent extends Component{
                         if(ids.size() > 0){
                             msg = new MessageActuatorRequestPosition(ids, value);
                             cli.issueMessage(msg);
+                            
                         }
 
                         if(groups.size() > 0){
