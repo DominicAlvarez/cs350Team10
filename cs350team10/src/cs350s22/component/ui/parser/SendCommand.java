@@ -1,5 +1,9 @@
 package cs350s22.component.ui.parser;
 
+/**
+  @author: Julian Diaz 
+  {@summary} : CSCD 350 project Team 10
+ **/
 
 public class SendCommand extends Command{
 

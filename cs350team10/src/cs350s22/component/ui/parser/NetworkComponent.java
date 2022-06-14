@@ -8,6 +8,11 @@ import cs350s22.component.controller.A_Controller;
 import cs350s22.component.sensor.A_Sensor;
 import cs350s22.support.Identifier;
 
+/**
+  @author: Julian Diaz 
+  {@summary} : CSCD 350 project Team 10
+ **/
+
 public class NetworkComponent extends Component{
 
    

@@ -2,6 +2,11 @@ package cs350s22.component.ui.parser;
 
 public class BuildCommand extends Command {
     
+
+    /**
+  @author: Julian Diaz 
+  {@summary} : CSCD 350 project Team 10
+ **/
     
     public BuildCommand(A_ParserHelper parserHelper, String[] commandText){
         super(parserHelper, commandText);

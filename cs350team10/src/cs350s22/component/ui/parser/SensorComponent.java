@@ -42,8 +42,8 @@ public class SensorComponent extends Component
         _mapperTable = parserHelper.getSymbolTableMapper();
         _watchdogTable = parserHelper.getSymbolTableWatchdog();
         _sensortable = parserHelper.getSymbolTableSensor();
-        reporters = new ArrayList<A_Reporter>();
-        watchdogs = new ArrayList<A_Watchdog>();
+        reporters = null;
+        watchdogs = null;
         mapper = null;
         mySensor = null;
 
@@ -69,7 +69,6 @@ public class SensorComponent extends Component
 
 
     public void createSensor(){
-        
         if(commandText[2].equals("SPEED") || commandText[2].equals("POSITION"))
         {
             id = Identifier.make(commandText[3]);
@@ -87,35 +86,30 @@ public class SensorComponent extends Component
                     }
                     
                 }
-                else if(commandText[i].equals("REPORTER") || commandText[i].equals("REPORTERS"))
+                else if(commandText[i].equals("REPORTERS") || commandText[i].equals("REPORTERS"))
                 {   
-                    
-                    while(i < commandText.length - 1 && !commandText[i + 1].equals("WATCHDOG") && !commandText[i + 1].equals("WATCHDOGS") && !commandText[i + 1].equals("MAPPER")){
+                    reporters = new ArrayList<A_Reporter>();
+                    while(!commandText[i + 1].equals("WATCHDOG") && !commandText[i + 1].equals("WATCHDOGS") && !commandText[i + 1].equals("MAPPER") && i < commandText.length - 1)
+                    {
                         i++; // must increment i to be in the correct position after while loop ends
                         reporters.add(_reporterTable.get(Identifier.make(commandText[i]))); // add an Identifier to groups
                     }
-                    i++;
                 }
-                
-                
                 else if(commandText[i].equals("WATCHDOGS") || commandText[i].equals("WATCHDOG"))
                 {   
-                    
-                    while(i < commandText.length - 1 && !commandText[i + 1].equals("MAPPER"))
+                    watchdogs = new ArrayList<A_Watchdog>();
+                    while(!commandText[i + 1].equals("MAPPER") && i < commandText.length - 1)
                     {
                         i++; // must increment i to be in the correct position after while loop ends
                         watchdogs.add(_watchdogTable.get(Identifier.make(commandText[i]))); // add an Identifier to groups
                     }
-                    i++;
                 
                 }
                 else if (commandText[i].equals("MAPPER"))
                 {
                     i++;
                     mapper = _mapperTable.get(Identifier.make(commandText[i]));
-                    i++;
                 }
-                
                 else
                 {
                     throw new RuntimeException("NOT A CORRECT COMPONENT/KEYWORD");
@@ -128,7 +122,8 @@ public class SensorComponent extends Component
                 
             }
             else if(groups != null || watchdogs != null || reporters != null){
-    
+                reporters = new ArrayList<A_Reporter>();
+                watchdogs = new ArrayList<A_Watchdog>();
                 mySensor = new MySensor(id, groups, reporters, watchdogs);
             }
             else{

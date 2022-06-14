@@ -96,24 +96,22 @@ public class ReporterComponent extends Component{
     private int setOptionalComponents(final String comp)
     {
         int i = 5;
-        while(i < commandText.length - 1 && !commandText[i].equals("FREQUENCY") ){
-            if(commandText[i].equals("GROUPS") || commandText[i].equals("GROUP"))
+        if(commandText[i].equals("GROUPS") || commandText[i].equals("GROUP"))
+        {
+            i++;
+            while(!commandText[i].equals("FREQUNCY") && !commandText[i].equals("DELTA") && !commandText[i].equals("IDS") && !commandText[i].equals("ID"))
             {
+                this.groups.add(Identifier.make(commandText[i]));
                 i++;
-                while(!commandText[i].equals("FREQUENCY") && !commandText[i].equals("DELTA") && !commandText[i].equals("IDS") && !commandText[i].equals("ID"))
-                {
-                    this.groups.add(Identifier.make(commandText[i]));
-                    i++;
-                }
             }
-            if(commandText[i].equals("ID") || commandText[i].equals("IDS"))
+        }
+        if(commandText[i].equals("ID") || commandText[i].equals("IDS"))
+        {
+            i++;
+            while(!commandText[i].equals("FREQUNCY") && !commandText[i].equals("DELTA") && !commandText[i].equals("GROUPS") && !commandText[i].equals("GROUP"))
             {
+                this.ids.add(Identifier.make(commandText[i]));
                 i++;
-                while(!commandText[i].equals("FREQUENCY") && !commandText[i].equals("DELTA") && !commandText[i].equals("GROUPS") && !commandText[i].equals("GROUP"))
-                {
-                    this.ids.add(Identifier.make(commandText[i]));
-                    i++;
-                }
             }
         }
         return i;

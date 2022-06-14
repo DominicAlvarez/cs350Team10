@@ -12,14 +12,11 @@ public class Parser{
     protected Command cmd;
     
 
-    public Parser(A_ParserHelper parserHelper, String commandText){
+    public Parser(A_ParserHelper parserHelper, String parse){
         this.parserHelper = parserHelper;
-        this.commandText = commandText;
+        this.commandText = parse;
      
     }
-
-   public final void disable_tracing(){} // not sure what do with these methods
-   public final void enable_tracing(){}
 
     public void parse() throws IOException, ParseException{
         String[] splitCommand = this.commandText.split(" ");
@@ -40,9 +37,17 @@ public class Parser{
         else if(type.equals("SEND")){
             return new SendCommand(parserHelper, command);
         }
+        else if(type.equals("SET")){
+            return new SetCommand(parserHelper, command);
+        }
+        else if(type.equals("GET")){
+            return new GetCommand(parserHelper, command);
+        }
+        else if(type.contains("@")){
+            return new MetaCommand(parserHelper, command);
+        }
         
-        
-        return null;
+        throw new RuntimeException("NOT A VALID COMMAND");
     }
 
     
