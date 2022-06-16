@@ -38,7 +38,7 @@ public class CreateCommand extends Command{
                 return new WatchdogComponent(parserHelper, commandText);
             
             default:
-                throw new RuntimeException("INVALID COMPONENT" + componentName + " IN CREATE COMMAND");
+                throw new RuntimeException("INVALID COMPONENT " + componentName + " IN CREATE COMMAND");
         }
         
         

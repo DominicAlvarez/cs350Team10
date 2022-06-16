@@ -11,6 +11,12 @@ import cs350s22.component.sensor.reporter.ReporterChange;
 import cs350s22.component.sensor.reporter.ReporterFrequency;
 import cs350s22.support.Identifier;
 
+/**
+  @author: Carlos Alvarez 
+  {@summary} : CSCD 350 project Team 10
+ **/
+
+ 
 public class ReporterComponent extends Component{
     protected SymbolTable<A_Actuator> _actuatorTable;
     protected SymbolTable<A_Sensor> _sensorTable;
@@ -33,8 +39,8 @@ public class ReporterComponent extends Component{
         reporterId = null;
     }
 
-    @Override
-    void action() {
+    
+    public void action() {
 
         type = commandText[2];
         
@@ -83,6 +89,7 @@ public class ReporterComponent extends Component{
                         }
                         break;
                 }
+                        System.out.println("REPORTER CREATED");
                         _reporterTable.add(reporterId, reporter);
             }
             
@@ -96,22 +103,24 @@ public class ReporterComponent extends Component{
     private int setOptionalComponents(final String comp)
     {
         int i = 5;
-        if(commandText[i].equals("GROUPS") || commandText[i].equals("GROUP"))
-        {
-            i++;
-            while(!commandText[i].equals("FREQUNCY") && !commandText[i].equals("DELTA") && !commandText[i].equals("IDS") && !commandText[i].equals("ID"))
+        while(i < commandText.length - 1 && !commandText[i].equals("FREQUENCY")  && !commandText[i].equals("DELTA")){
+            if(commandText[i].equals("GROUPS") || commandText[i].equals("GROUP"))
             {
-                this.groups.add(Identifier.make(commandText[i]));
                 i++;
+                while(!commandText[i].equals("FREQUENCY") && !commandText[i].equals("DELTA") && !commandText[i].equals("IDS") && !commandText[i].equals("ID"))
+                {
+                    this.groups.add(Identifier.make(commandText[i]));
+                    i++;
+                }
             }
-        }
-        if(commandText[i].equals("ID") || commandText[i].equals("IDS"))
-        {
-            i++;
-            while(!commandText[i].equals("FREQUNCY") && !commandText[i].equals("DELTA") && !commandText[i].equals("GROUPS") && !commandText[i].equals("GROUP"))
+            if(commandText[i].equals("ID") || commandText[i].equals("IDS"))
             {
-                this.ids.add(Identifier.make(commandText[i]));
                 i++;
+                while(!commandText[i].equals("FREQUENCY") && !commandText[i].equals("DELTA") && !commandText[i].equals("GROUPS") && !commandText[i].equals("GROUP"))
+                {
+                    this.ids.add(Identifier.make(commandText[i]));
+                    i++;
+                }
             }
         }
         return i;

@@ -17,11 +17,11 @@ public class OtherMetaComponent extends Component{
         super(parserHelper, commandText);
     }
 
-    @Override
-    void action() {
-        if (commandText[0].equals("@EXIT"))
+    
+    public void action() {
+        if (commandText[0].toUpperCase().equals("@EXIT"))
             _exitHandler();
-        else if (commandText[0].equals("@RUN"))
+        else if (commandText[0].toUpperCase().equals("@RUN"))
             _runHandler();
         else
             _configureHandler();

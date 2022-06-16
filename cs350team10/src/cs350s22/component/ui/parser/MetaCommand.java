@@ -14,9 +14,9 @@ public class MetaCommand extends Command{
         this.component = createComponent(componentName);
     }
 
-    @Override
-    Component createComponent(String componentName) {
-        switch(componentName) {
+    
+    public Component createComponent(String componentName) {
+        switch(componentName.toUpperCase()) {
             case "@CLOCK":
                 return new ClockComponent(parserHelper, commandText);
             case "@EXIT":
