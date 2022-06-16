@@ -178,6 +178,7 @@ public class ActuatorComponent extends Component {
 
     private void setType(final String type)
     {
+        
         if(type.equals("LINEAR") || type.equals("ROTARY"))
         {
             this.actuatorType = type;

@@ -4,7 +4,7 @@ public class BuildCommand extends Command {
     
 
     /**
-  @author: Julian Diaz 
+  @author: Carlos Alvarez 
   {@summary} : CSCD 350 project Team 10
  **/
     

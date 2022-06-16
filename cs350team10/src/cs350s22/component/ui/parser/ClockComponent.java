@@ -20,7 +20,7 @@ public class ClockComponent extends Component {
     }
 
     @Override
-    void action() {
+    public void action() {
         if (commandText.length == 1) {
             System.out.println(clock.getTime()); // cmd 7 in meta cmd
         } else if (commandText[1].equals("PAUSE") || commandText[1].equals("RESUME")) {
@@ -92,6 +92,7 @@ public class ClockComponent extends Component {
         } else {
             throw new RuntimeException("WAIT COMMAND SHALL CONTAIN FOR OR UNTIL!");
         }
+        
 
     }
 
